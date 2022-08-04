@@ -1,44 +1,77 @@
 import React from "react";
-import { View } from "react-native";
+import { StyleSheet } from "react-native";
+
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 
 import Home from "../screens/Home";
 import Productos from "../screens/Productos";
 
 const Stack = createNativeStackNavigator();
 
+const Tab = createBottomTabNavigator();
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "#1774F2",
+  },
+};
+
 const ShopNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
+      <Tab.Navigator
         initialRouteName="Home"
         screenOptions={{
           headerTitleAlign: "center",
           headerStyle: {
-            backgroundColor: "#D8CBB9",
+            backgroundColor: theme.colors.accent,
+            height: 70,
           },
-          headerTintColor: "#FFF",
+
+          headerTintColor: theme.colors.surface,
           headerTitleStyle: {
             fontWeight: "bold",
           },
+          tabBarStyle: styles.tabBar,
         }}
       >
-        <Stack.Screen
+        <Tab.Screen
           name="Home"
           component={Home}
-          options={{ title: "Inicio" }}
-        />
+          options={{
+            title: "Inicio",
 
-        <Stack.Screen
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="ios-home" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
           name="Productos"
           component={Productos}
-          options={{ title: "Productos" }}
+          options={{
+            title: "Productos",
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="ios-apps-sharp" size={size} color={color} />
+            ),
+          }}
         />
-      </Stack.Navigator>
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  tabBar: {
+    height: 90,
+    position: "absolute",
+  },
+});
 
 export default ShopNavigator;
