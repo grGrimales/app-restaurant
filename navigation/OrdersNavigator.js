@@ -1,18 +1,12 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { Platform } from "react-native";
-
-import Home from "../screens/Home";
-import Productos from "../screens/Productos";
-import { ProductDetail } from "../screens/ProductDetail";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
-
-const ShopNavigator = () => {
+export const OrdersNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Productos"
+      initialRouteName="Orders"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -26,28 +20,12 @@ const ShopNavigator = () => {
       }}
     >
       <Stack.Screen
-        name="Productos"
-        component={Productos}
+        name="Orders"
+        component={OrderItem}
         options={{
           title: "Productos",
         }}
       />
-
-      <Stack.Screen
-        name="Detalle del Producto"
-        component={ProductDetail}
-        //   options={({ route }) => ({ title: route.params.PRODUCTS.name })}
-      />
     </Stack.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  tabBar: {
-    height: 90,
-    position: "absolute",
-    paddingBottom: 10,
-  },
-});
-
-export default ShopNavigator;

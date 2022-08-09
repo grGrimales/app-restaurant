@@ -1,26 +1,12 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import ShopNavigator from "./navigation/ShopNavigator";
-import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
+import { Provider } from "react-redux";
+import MainNavigation from "./navigation";
 
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: "#1774F2",
-  },
-};
+import createStore from "./store";
 
-console.log(theme.colors);
 export default function App() {
-  return <ShopNavigator />;
+  return (
+    <Provider store={createStore}>
+      <MainNavigation />
+    </Provider>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
