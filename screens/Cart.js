@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    fontFamily: "OpenSansBold",
     padding: 8,
   },
 });
