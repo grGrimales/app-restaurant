@@ -1,12 +1,16 @@
 import React from "react";
 import { Platform } from "react-native";
+
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Cart } from "../screens/Cart";
+import OrderItem from "../screens/OrderItem";
 
 const Stack = createNativeStackNavigator();
-export const OrdersNavigator = () => {
+
+const OrdersNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Orders"
+      initialRouteName="Ordenes"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -20,12 +24,12 @@ export const OrdersNavigator = () => {
       }}
     >
       <Stack.Screen
-        name="Orders"
+        name="Ordenes"
         component={OrderItem}
-        options={{
-          title: "Productos",
-        }}
+        options={{ title: "Ordenes" }}
       />
     </Stack.Navigator>
   );
 };
+
+export default OrdersNavigator;

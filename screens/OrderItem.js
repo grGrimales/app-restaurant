@@ -1,6 +1,12 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
-export const OrderItem = () => {
-  return <View>OrderItem</View>;
+const OrderItem = () => {
+  return (
+    <View>
+      <Text>Ordenes</Text>
+    </View>
+  );
 };
+
+export default OrderItem;
